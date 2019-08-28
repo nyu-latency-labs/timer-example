@@ -1,0 +1,31 @@
+[package]
+name = "timer-test"
+version = "0.1.0"
+authors = ["Aurojit Panda <apanda@cs.nyu.edu>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures-preview = { version = "0.3.0-alpha.18", features = ["compat", "nightly", "async-await"] }
+tokio = "0.1.22"
+tarpc = { git="https://github.com/nyu-latency-labs/tarpc.git", features = ["serde1"] }
+tarpc-plugins = { git="https://github.com/nyu-latency-labs/tarpc.git", branch = "master" }
+bincode-transport = { package = "tarpc-bincode-transport", version = "0.7", git="https://github.com/nyu-latency-labs/tarpc.git" }
+clap = "2.32.0"
+serde = "1.0"
+serde_derive = "1.0"
+time = "0.1"
+futures-timer = "0.3"
+
+[lib]
+name = "service"
+path = "src/lib.rs"
+
+[[bin]]
+name = "server"
+path = "src/main.rs"
+
+[[bin]]
+name = "client"
+path = "src/client.rs"
